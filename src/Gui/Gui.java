@@ -1,4 +1,4 @@
-package chat;
+package Gui;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -21,6 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import chat.Client;
+import chat.ResourceLoader;
 
 public class Gui{
 
