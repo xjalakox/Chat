@@ -17,20 +17,23 @@ import chat.ResourceLoader;
 
 public class Menu {
 	
-	public JFrame Mainframe;
-	public JPanel Mainpanel;
-	public JLabel Mainlabel;
+	public JFrame mainframe;
+	public JPanel mainpanel;
+	public JLabel mainlabel;
+	public JFrame friendlistframe;
+	public JPanel friendlistpanel;
+	public JLabel friendlistlabel;
 
+	Color yellow = new Color(241, 196, 15);
 	
-
-	Dimension minimumSize = new Dimension(100, 50);
+	private int x;
+	private int y;
 	
 	public Menu(){
 		
 		/////////////////////////////IMAGES//////////////////////////////////////////
-		
+
 		BufferedImage mainpanel_bf = null;
-		
 		try {
 			mainpanel_bf = ImageIO.read(ResourceLoader.load("/Mainpanel.png"));
 		} catch (IOException e1) {
@@ -39,29 +42,38 @@ public class Menu {
 		
 		///////////////////////////MAIN COMPONENTS///////////////////////////////////
 		
-		JFrame Mainframe = new JFrame("WeChat");
-		Mainframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		Mainframe.setSize(1200, 800);
-		Mainframe.setLocationRelativeTo(null);
-		Mainframe.setResizable(false);
-		Mainframe.setVisible(true);
+		JFrame mainframe = new JFrame("WeChat");
+		mainframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		mainframe.setBounds(x,y,1000, 800);
+		mainframe.setLocationRelativeTo(null);
+		mainframe.setResizable(false);
+		mainframe.setVisible(true);
 		
-		Color red = new Color(241, 196, 15);
+		JPanel mainpanel = new JPanel();
+		mainpanel.setBounds(0,0,1200,800);
+		mainpanel.setBackground(yellow);
 		
-		JPanel Mainpanel = new JPanel();
-		Mainpanel.setBounds(0,0,1200,800);
-		Mainpanel.setBackground(red);
-		
-		JLabel Mainlabel = new JLabel(new ImageIcon(mainpanel_bf));
-		Mainlabel.setBounds(0,0,1200,800);
+		JLabel mainlabel = new JLabel(new ImageIcon(mainpanel_bf));
+		mainlabel.setBounds(0,0,1200,800);
 
 		////////////////////////////OTHER COMPONENTS////////////////////////////////////
 
+		JFrame friendlistframe = new JFrame("Friends");
+		friendlistframe.setBounds(0,0,300, 800);
+		friendlistframe.setLocationRelativeTo(null);
+		friendlistframe.setResizable(false);
+		friendlistframe.setVisible(true);
 		
+		JPanel friendlistpanel = new JPanel();
+		friendlistpanel.setBounds(0,0,200,800);
+		friendlistpanel.setBackground(yellow);
 		
-		Mainframe.add(Mainpanel);
-		Mainpanel.add(Mainlabel);
-		Mainframe.repaint();
+		JLabel friendlistlabel = new JLabel(new ImageIcon(mainpanel_bf));
+		friendlistlabel.setBounds(0,0,200,800);
+		
+		mainframe.add(mainpanel);
+		mainpanel.add(mainlabel);
+		mainframe.repaint();
 
 	}
 	public static void main(String[] args) {
