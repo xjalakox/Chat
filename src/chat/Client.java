@@ -156,7 +156,7 @@ public class Client {
 					textArea_Messages.setCaretPosition(textArea_Messages.getText().length());
 				}
 			} catch (IOException e) {
-				appendTextMessages("Nachricht konnte nicht empfangen werden!");
+				appendTextMessages("Nachricht konnte nicht empfangen werden! Prüfe deine Internetverbindung oder wende dich an den Support");
 				e.printStackTrace();
 			}
 		}
