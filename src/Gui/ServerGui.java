@@ -1,6 +1,7 @@
 package Gui;
 
 import java.awt.Desktop;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -17,32 +18,45 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import chat.Client;
 import chat.ResourceLoader;
+import chat.Server;
 
-public class ServerGui{
-
+public class ServerGui implements ActionListener{
+	
+	public JFrame Mainframe;
+	
 	public JButton start;
 	public JButton stop;	
+	public JLabel statuslabel;
+	///////////////////////////////
+
+
 	
 	public ServerGui(){
 		
-		JFrame Mainframe = new JFrame("WeChat");
+		Mainframe = new JFrame("WeChat");
 		Mainframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		Mainframe.setSize(800, 600);
+		Mainframe.setLayout(new GridLayout(3,1));
+		Mainframe.setSize(400, 300);
 		Mainframe.setLocationRelativeTo(null);
 		Mainframe.setResizable(false);
 		Mainframe.setVisible(true);
 		
 
+		statuslabel = new JLabel("", SwingConstants.CENTER);
 		
-		JButton start = new JButton("Server starten");
-		start.setBounds(0,0,100,100);
+		start = new JButton("Server starten");
+		start.addActionListener(this);
 		
-		JButton stop = new JButton("Server stoppen");
-		stop.setBounds(0,0,100,100);
+		stop = new JButton("Server stoppen");
+		stop.addActionListener(this);
+		
+		
+		
 		
 		
 
@@ -50,11 +64,27 @@ public class ServerGui{
 		
 		Mainframe.add(start);
 		Mainframe.add(stop);
+		Mainframe.add(statuslabel);
 		
 		Mainframe.repaint();
 	}
 	
+	
+	
 	public static void main(String args[]){
 		ServerGui gui = new ServerGui();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == start) {
+			statuslabel.setText("Server an!");
+			start.setEnabled(false);
+	    	Server.start();
+		}
+    	if(e.getSource() == stop) {
+    		statuslabel.setText("Server aus!");
+    		Server.stop();
+    	}
 	}
 }

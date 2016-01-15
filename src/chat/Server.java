@@ -11,24 +11,48 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
  
 public class Server {
  
         ServerSocket server;
         ArrayList<PrintWriter> list_clientWriter;
-       
+        
+        private static Thread serverThread;
+        
         final int LEVEL_ERROR = 1;
         final int LEVEL_NORMAL = 0;
  
-        public static void main(String[] args) {
-                Server s = new Server();
-                if (s.runServer()) {
-                        s.listenToClients();
-                } else {
-                }
+        public static void start() {
+        	if(serverThread != null) {
+        		serverThread.notify();
+        	} else {
+        		serverThread = new Thread(
+        				new Runnable(){
+        					@Override
+        					public void run(){
+        						Server s = new Server();
+        						if (s.runServer()) {
+        							s.listenToClients();
+        						} else {
+        						}
+        					}
+        		});
+        		serverThread.start();
+        	}
         }
        
+        public static void stop() {
+        	try {
+				serverThread.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        
         public class ClientHandler implements Runnable {
  
                 Socket client;

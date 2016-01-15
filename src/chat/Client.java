@@ -93,7 +93,7 @@ public class Client {
 	
 	public boolean connectToServer() {
 		try {
-			client = new Socket("java-pokemon.tk", 1337);
+			client = new Socket("localhost", 1337);
 			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			writer = new PrintWriter(client.getOutputStream());
 		//	appendTextMessages("Du bist dem Chat-Room beigetreten");
