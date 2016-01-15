@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,6 +39,16 @@ public class Client {
 	public void createGUI() {
 		clientFrame = new JFrame("Chat-Room 1 (Default)");
 		clientFrame.setSize(800, 600);
+		
+		clientFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we){
+            	writer.println(Gui.username + " hat den Chat verlassen!");
+            	clientFrame.setVisible(false);
+            	clientFrame.dispose(); 
+                
+            }
+        });
 		
 		// Panel erzeugen, welches alle anderen Inhalte enthält
 		clientPanel = new JPanel();
@@ -79,7 +91,7 @@ public class Client {
 	
 	public boolean connectToServer() {
 		try {
-			client = new Socket("localhost", 1337);
+			client = new Socket("java-pokemon.tk", 1337);
 			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			writer = new PrintWriter(client.getOutputStream());
 			appendTextMessages("Du bist dem Chat-Room beigetreten");
