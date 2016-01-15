@@ -1,4 +1,5 @@
 package chat;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.BufferedReader;
@@ -10,14 +11,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
- 
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.html.HTMLEditorKit;
+
  
 public class Server {
  
@@ -60,7 +54,6 @@ public class Server {
                                         sendToAllClients(nachricht);
                                 }
                         } catch (IOException e) {
-                               	sendToAllClients("Ein Nutzer hat den Chat verlassen");
                         }
                 }
         }
