@@ -1,5 +1,6 @@
 package Gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -45,8 +46,11 @@ public class Menu {
 		Mainframe.setResizable(false);
 		Mainframe.setVisible(true);
 		
+		Color red = new Color(241, 196, 15);
+		
 		JPanel Mainpanel = new JPanel();
-		Mainpanel.setBounds(0,20,1200,800);
+		Mainpanel.setBounds(0,0,1200,800);
+		Mainpanel.setBackground(red);
 		
 		JLabel Mainlabel = new JLabel(new ImageIcon(mainpanel_bf));
 		Mainlabel.setBounds(0,0,1200,800);
@@ -57,7 +61,7 @@ public class Menu {
 		
 		Mainframe.add(Mainpanel);
 		Mainpanel.add(Mainlabel);
-		
+		Mainframe.repaint();
 
 	}
 	public static void main(String[] args) {
