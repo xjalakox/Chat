@@ -39,13 +39,17 @@ public class ServerGui{
 
 		
 		JButton start = new JButton("Server starten");
-		start.setBounds(290,410,230,40);
+		start.setBounds(0,0,100,100);
+		
+		JButton stop = new JButton("Server stoppen");
+		stop.setBounds(0,0,100,100);
 		
 		
 
 		
 		
 		Mainframe.add(start);
+		Mainframe.add(stop);
 		
 		Mainframe.repaint();
 	}
