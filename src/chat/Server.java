@@ -26,7 +26,6 @@ public class Server {
                 if (s.runServer()) {
                         s.listenToClients();
                 } else {
-                        // Do nothing
                 }
         }
        
