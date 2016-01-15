@@ -94,7 +94,8 @@ public class Client {
 			client = new Socket("java-pokemon.tk", 1337);
 			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			writer = new PrintWriter(client.getOutputStream());
-			appendTextMessages("Du bist dem Chat-Room beigetreten");
+		//	appendTextMessages("Du bist dem Chat-Room beigetreten");
+			sendJoinMessage();
 			
 			return true;
 		} catch(Exception e) {
@@ -115,6 +116,11 @@ public class Client {
 	
 	public void sendQuitMessage(){
 		writer.println(Gui.username + " hat den Chat verlassen.");
+		writer.flush();
+	}
+	
+	public void sendJoinMessage(){
+		writer.println(Gui.username + " ist dem Chat beigetreten!");
 		writer.flush();
 	}
 	
