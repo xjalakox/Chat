@@ -43,7 +43,8 @@ public class Client {
 		clientFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we){
-            	writer.println(Gui.username + " hat den Chat verlassen!");
+        		writer.println("");
+        		writer.flush();
             	clientFrame.setVisible(false);
             	clientFrame.dispose(); 
                 
@@ -113,6 +114,11 @@ public class Client {
 		textField_ClientMessage.requestFocus();
 	}
 	
+	public void sendQuitMessage(){
+		writer.println(Gui.username + " hat den Chat verlassen.");
+		writer.flush();
+	}
+	
 	public void appendTextMessages(String message) {
 		textArea_Messages.append(message + "\n");
 	}
@@ -154,6 +160,7 @@ public class Client {
 				while((message = reader.readLine()) != null) {
 					appendTextMessages(message);
 					textArea_Messages.setCaretPosition(textArea_Messages.getText().length());
+					
 				}
 			} catch (IOException e) {
 				appendTextMessages("Nachricht konnte nicht empfangen werden!");
