@@ -43,8 +43,7 @@ public class Client {
 		clientFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we){
-        		writer.println("");
-        		writer.flush();
+            	sendQuitMessage();
             	clientFrame.setVisible(false);
             	clientFrame.dispose(); 
                 
