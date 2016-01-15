@@ -48,7 +48,7 @@ public class Server {
         	try {
 				serverThread.wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				// TODO Auto-generated catch ablock
 				e.printStackTrace();
 			}
         }
