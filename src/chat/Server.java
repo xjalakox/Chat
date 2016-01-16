@@ -26,9 +26,6 @@ public class Server {
         final int LEVEL_NORMAL = 0;
  
         public static void start() {
-        	if(serverThread != null) {
-        		serverThread.notify();
-        	} else {
         		serverThread = new Thread(
         				new Runnable(){
         					@Override
@@ -41,16 +38,9 @@ public class Server {
         					}
         		});
         		serverThread.start();
-        	}
         }
        
-        public static void stop() {
-        	try {
-				serverThread.wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch ablock
-				e.printStackTrace();
-			}
+		public static void stop() {
         }
         
         public class ClientHandler implements Runnable {
