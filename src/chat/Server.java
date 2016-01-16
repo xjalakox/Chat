@@ -24,6 +24,8 @@ public class Server {
         
         final int LEVEL_ERROR = 1;
         final int LEVEL_NORMAL = 0;
+        
+        static boolean pls = true;
  
         public static void start() {
         		serverThread = new Thread(
@@ -31,15 +33,15 @@ public class Server {
         					@Override
         					public void run(){
         						Server s = new Server();
-        						if (s.runServer()) {
+        						while (s.runServer()) {
         							s.listenToClients();
-        						} else {
         						}
         					}
         		});
         		serverThread.start();
         }
        
+        
 		public static void stop() {
         }
         
