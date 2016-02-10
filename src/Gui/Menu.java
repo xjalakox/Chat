@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -60,36 +61,42 @@ public class Menu {
 		b = mainframe.getY();
 		
 		JPanel mainpanel = new JPanel();
-		mainpanel.setBounds(0,0,1200,800);
-		mainpanel.setBackground(yellow);
+		mainpanel.setLayout(null);
+		mainpanel.setBounds(0,0,1000,800);
+		
 
 		JLabel mainlabel = new JLabel(new ImageIcon(mainpanel_bf));
-		mainlabel.setBounds(0,0,1200,800);
+		mainlabel.setBounds(0,0,1000,800);
 		
 
 		////////////////////////////OTHER COMPONENTS////////////////////////////////////
 
 		JFrame friendlistframe = new JFrame("Freunde");
-		friendlistframe.setBounds(a+995,b,300, 800);
+		friendlistframe.setBounds(a+995,b,210, 800);
 		friendlistframe.setResizable(false);
 		friendlistframe.setVisible(true);
 		
 		JPanel friendlistpanel = new JPanel();
-		friendlistpanel.setBounds(0,0,200,800);
-		friendlistpanel.setBackground(yellow);
+		friendlistpanel.setBounds(0,0,210,800);
+		
 		
 		JLabel friendlistlabel = new JLabel(new ImageIcon(friendlistpanel_bf));
-		friendlistlabel.setBounds(0,0,200,800);
+		friendlistlabel.setBounds(0,0,210,800);
 		
 		
+		JButton randomchat = new JButton("Hello");
+		randomchat.setBounds(450, 350, 150, 40);
+		randomchat.setVisible(true);
+		
+		mainpanel.add(randomchat);
 		mainframe.add(mainpanel);
 		mainpanel.add(mainlabel);
 		friendlistframe.add(friendlistpanel);
 		friendlistpanel.add(friendlistlabel);
+
+
+		
 		mainframe.repaint();
-		
-		
-		
 		while(true){
 			atemp = mainframe.getX();
 			btemp = mainframe.getY();
@@ -97,8 +104,8 @@ public class Menu {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
 			}
-			if(a != atemp)friendlistframe.setBounds(atemp+995, btemp, 300, 800);
-			if(b != btemp)friendlistframe.setBounds(atemp+995, btemp, 300, 800);
+			if(a != atemp)friendlistframe.setBounds(atemp+995, btemp, 210, 800);
+			if(b != btemp)friendlistframe.setBounds(atemp+995, btemp, 210, 800);
 		}
 
 	}
