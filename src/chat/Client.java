@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -109,7 +111,8 @@ public class Client {
 	}
 	
 	public void sendMessageToServer() {
-		writer.println(Gui.username + ": " + textField_ClientMessage.getText());
+		String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+		writer.println("[" + now + "] " + Gui.username + ": " + textField_ClientMessage.getText());
 		writer.flush();
 		
 		textField_ClientMessage.setText("");
@@ -117,12 +120,14 @@ public class Client {
 	}
 	
 	public void sendQuitMessage(){
-		writer.println(Gui.username + " hat den Chat verlassen.");
+		String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+		writer.println("[" + now + "] " + Gui.username + ": " + " hat den Chat verlassen.");
 		writer.flush();
 	}
 	
 	public void sendJoinMessage(){
-		writer.println(Gui.username + " ist dem Chat beigetreten!");
+		String now = new SimpleDateFormat("HH:mm:ss").format(new Date());
+		writer.println("[" + now + "] " + Gui.username + ": " + " ist dem Chat beigetreten!");
 		writer.flush();
 	}
 	
